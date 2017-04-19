@@ -59,8 +59,7 @@ namespace ConsoleApp6
 
             //Shared controllers.
             container.Register<ILogger, LoggerController>(Lifestyle.Singleton);
-
-
+            
             container.Verify();
 
             return container;

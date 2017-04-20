@@ -22,7 +22,8 @@ namespace ConsoleApp6
             IBussinesLogicController controller = container.GetInstance<IBussinesLogicController>();
             controller.Execute();
 
-            var opo = container.GetInstance<IFactory<IStationController>>();
+            IFactory<IStationController> stationControllerFactory= container.GetInstance<IFactory<IStationController>>();
+            IStationController stationController = stationControllerFactory.CreateInstance();
 
             Console.WriteLine("Started");
             Console.ReadLine();
@@ -62,7 +63,9 @@ namespace ConsoleApp6
             //Shared controllers.
             container.Register<ILogger, LoggerController>(Lifestyle.Singleton);
 
-            container.Register<IFactory<IStationController>, FactoryController<IStationController>>(Lifestyle.Singleton);
+            //Generic factory.
+            container.Register(typeof(IFactory<>), typeof(FactoryController<>), Lifestyle.Singleton);
+            
 
             container.Verify();
 

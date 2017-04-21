@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace BLL.Tools
 {
-   public class ShootYourselfInTheFaceTool : ITool
+    [Name("Shoot Yourself Tool")]
+    public class ShootYourselfInTheFaceTool : ITool
     {
         public string Name => this.GetType().Name;
 

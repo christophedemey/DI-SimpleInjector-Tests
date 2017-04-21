@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Tools
 {
+    [Name("Woooooop Tool")]
     public class WoopTool : ITool
     {
         public string Name => this.GetType().Name;

@@ -4,6 +4,7 @@ using BLL;
 using Models.Interfaces;
 using Moq;
 using Logger;
+using ConsoleApp6;
 
 namespace Tests
 {
@@ -13,7 +14,7 @@ namespace Tests
         private Mock<IDataAccessController> dataAccess = null;
         private Mock<ILogger> logger = null;
         private Mock<IToolController> tools = null;
-        private Func<IStationController> stationFactory = null;
+        private Mock<IFactory<IStationController>> stationFactory = null;
         private IBussinesLogicController bussinesLogic = null;
 
         [TestInitialize]
@@ -22,9 +23,9 @@ namespace Tests
             dataAccess = new Mock<IDataAccessController>();
             logger = new Mock<ILogger>();
             tools = new Mock<IToolController>();
-            stationFactory = StationFactory;
+            stationFactory = new Mock<IFactory<IStationController>>();
 
-            bussinesLogic = new BussinesLogicController(dataAccess.Object, logger.Object, stationFactory);
+            bussinesLogic = new BussinesLogicController(dataAccess.Object, logger.Object, stationFactory.Object);
             bussinesLogic.ToolController = tools.Object;
         }
 

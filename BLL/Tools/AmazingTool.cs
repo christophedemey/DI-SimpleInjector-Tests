@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace BLL.Tools
 {
-   public class AmazingTool : ITool
+    [Name("Amazing Tool")]
+    public class AmazingTool : ITool
     {
         public string Name => this.GetType().Name;
 

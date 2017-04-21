@@ -51,7 +51,7 @@ namespace ConsoleApp6
             container.Register<IToolController, ToolController>(Lifestyle.Singleton);
 
             //Register tool factory.
-            container.RegisterSingleton<Func<string, ITool>>((toolType) => container.GetAllInstances<ITool>().Where(row => row.Name == toolType).FirstOrDefault());
+            container.RegisterSingleton<Func<string, ITool>>((toolType) => container.GetAllInstances<ITool>().Where(row => row.GetType().GetCustomAttribute<NameAttribute>().Name == toolType).FirstOrDefault());
 
 
             //Data Access controllers.

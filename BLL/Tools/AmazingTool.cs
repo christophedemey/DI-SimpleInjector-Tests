@@ -5,22 +5,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace BLL.Tools
 {
     [ToolName("Amazing Tool")]
     public class AmazingTool : ITool
     {
-        public string Name => this.GetType().Name;
-
         public void Disable()
         {
-            Console.WriteLine($"Disabled {Name.ToString()}");
+            Console.WriteLine($"Disabled {GetType().GetCustomAttribute<ToolNameAttribute>().Name}");
         }
 
         public void Enable()
         {
-            Console.WriteLine($"Enabled {Name.ToString()}");
-        }
+            Console.WriteLine($"Enabled {GetType().GetCustomAttribute<ToolNameAttribute>().Name}");
+         }
     }
 }

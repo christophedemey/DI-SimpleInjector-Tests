@@ -3,6 +3,7 @@ using Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,16 +12,14 @@ namespace BLL.Tools
     [ToolName("Shoot Yourself Tool")]
     public class ShootYourselfInTheFaceTool : ITool
     {
-        public string Name => this.GetType().Name;
-
         public void Disable()
         {
-            Console.WriteLine($"Disabled {Name.ToString()}");
+            Console.WriteLine($"Disabled {GetType().GetCustomAttribute<ToolNameAttribute>().Name}");
         }
 
         public void Enable()
         {
-            Console.WriteLine($"Enabled {Name.ToString()}");
+            Console.WriteLine($"Enabled {GetType().GetCustomAttribute<ToolNameAttribute>().Name}");
         }
     }
 }

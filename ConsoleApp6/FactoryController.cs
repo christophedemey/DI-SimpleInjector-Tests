@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp6
 {
-    public class FactoryController<T> : IFactory<T> where T : class
+    public class FactoryController<T> : IFactory<T> where T: class
     {
         private Container container = null;
 

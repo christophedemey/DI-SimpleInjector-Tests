@@ -13,7 +13,7 @@ namespace Tests
         private Mock<IDataAccessController> dataAccess = null;
         private Mock<ILogger> logger = null;
         private Mock<IToolController> tools = null;
-        private Mock<IFactory<IStationController>> stationFactory = null;
+        private Mock<IGenericFactory<IStationController>> stationFactory = null;
         private IBussinesLogicController bussinesLogic = null;
 
         [TestInitialize]
@@ -22,7 +22,7 @@ namespace Tests
             dataAccess = new Mock<IDataAccessController>();
             logger = new Mock<ILogger>();
             tools = new Mock<IToolController>();
-            stationFactory = new Mock<IFactory<IStationController>>();
+            stationFactory = new Mock<IGenericFactory<IStationController>>();
 
             bussinesLogic = new BussinesLogicController(dataAccess.Object, logger.Object, stationFactory.Object);
             bussinesLogic.ToolController = tools.Object;

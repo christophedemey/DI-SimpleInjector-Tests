@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Models.Interfaces
 {
-    public interface IFactory<T>
+    public interface IToolFactory
     {
-        T CreateInstance();
+        ITool CreateInstance(string name);
     }
 }

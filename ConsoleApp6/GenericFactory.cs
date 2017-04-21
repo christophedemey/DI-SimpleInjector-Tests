@@ -1,18 +1,20 @@
 ﻿using Models.Interfaces;
 using SimpleInjector;
+using System.Reflection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Models.Attributes;
 
 namespace ConsoleApp6
 {
-    public class FactoryController<T> : IFactory<T> where T: class
+    public class GenericFactory<T> : IGenericFactory<T> where T: class
     {
         private Container container = null;
 
-        public FactoryController(Container container)
+        public GenericFactory(Container container)
         {
             this.container = container;
         }

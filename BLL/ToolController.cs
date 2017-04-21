@@ -13,9 +13,9 @@ namespace BLL
     public class ToolController : IToolController
     {
         private IEnumerable<ITool> tools = null;
-        private Func<string, ITool> toolFactory = null;
+        private IToolFactory toolFactory = null;
 
-        public ToolController(IEnumerable<ITool> tools, Func<string, ITool> toolFactory)
+        public ToolController(IEnumerable<ITool> tools, IToolFactory toolFactory)
         {
             this.tools = tools;
             this.toolFactory = toolFactory;
@@ -33,7 +33,7 @@ namespace BLL
 
         public ITool CreateToolOfType(string toolType)
         {
-            return toolFactory.Invoke(toolType);
+            return toolFactory.CreateInstance(toolType);
         }
     }
 }

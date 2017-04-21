@@ -23,7 +23,7 @@ namespace ConsoleApp6
             IBussinesLogicController controller = container.GetInstance<IBussinesLogicController>();
             controller.Execute();
 
-            IFactory<IStationController> stationControllerFactory= container.GetInstance<IFactory<IStationController>>();
+            IGenericFactory<IStationController> stationControllerFactory= container.GetInstance<IGenericFactory<IStationController>>();
             IStationController stationController = stationControllerFactory.CreateInstance();
 
             Console.WriteLine("Started");
@@ -52,9 +52,8 @@ namespace ConsoleApp6
             container.Register<IToolController, ToolController>(Lifestyle.Singleton);
 
             //Register tool factory.
-            container.RegisterSingleton<Func<string, ITool>>((toolType) => container.GetAllInstances<ITool>().Where(row => row.GetType().GetCustomAttribute<ToolNameAttribute>().Name == toolType).FirstOrDefault());
-
-
+            container.RegisterSingleton<IToolFactory, ToolFactory>();
+            
             //Data Access controllers.
             container.Register<IDataAccessController, DataAccessController>(Lifestyle.Singleton);
             container.Register<IDirectoryStructureController, DirectoryStructureController>(Lifestyle.Singleton);
@@ -63,7 +62,7 @@ namespace ConsoleApp6
             container.Register<ILogger, LoggerController>(Lifestyle.Singleton);
 
             //Generic factory.
-            container.Register(typeof(IFactory<>), typeof(FactoryController<>), Lifestyle.Singleton);
+            container.Register(typeof(IGenericFactory<>), typeof(GenericFactory<>), Lifestyle.Singleton);
             
 
             container.Verify();

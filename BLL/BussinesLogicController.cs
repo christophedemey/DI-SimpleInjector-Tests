@@ -12,12 +12,12 @@ namespace BLL
     {
         private IDataAccessController dataAccess = null;
         private ILogger logger = null;
-        private IFactory<IStationController> stationControllerFactory = null;
+        private IGenericFactory<IStationController> stationControllerFactory = null;
         public IToolController ToolController { get; set; }
 
         public BussinesLogicController(IDataAccessController dataAccess,
-            ILogger logger,
-          IFactory<IStationController> stationControllerFactory)
+          ILogger logger,
+          IGenericFactory<IStationController> stationControllerFactory)
         {
             this.dataAccess = dataAccess;
             this.logger = logger;

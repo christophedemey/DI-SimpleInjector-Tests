@@ -33,11 +33,11 @@ namespace BLL
 
             ToolController.PrintToolTypes();
 
-            List<ITool> amazingTools = new List<ITool>();
-            for (int i = 0; i < 1000000; i++)
-            {
-                amazingTools.Add(ToolController.CreateToolOfType("AmazingTool"));
-            }
+            //List<ITool> amazingTools = new List<ITool>();
+            //for (int i = 0; i < 1000000; i++)
+            //{
+            //    amazingTools.Add(ToolController.CreateToolOfType("AmazingTool"));
+            //}
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Models.Interfaces;
+﻿using Models.Attributes;
+using Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Tools
 {
-    [Name("Habanero Tool")]
+    [ToolName("Habanero Tool")]
     public class HabaneroTool : ITool
     {
         public string Name => this.GetType().Name;

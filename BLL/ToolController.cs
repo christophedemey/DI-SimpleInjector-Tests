@@ -1,4 +1,5 @@
 ﻿using BLL.Tools;
+using Models.Attributes;
 using Models.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace BLL
             Console.WriteLine("Available tool types :");
             foreach (ITool tool in tools)
             {
-                Console.WriteLine($"- {tool.GetType().GetCustomAttribute<NameAttribute>().Name}");
+                Console.WriteLine($"- {tool.GetType().GetCustomAttribute<ToolNameAttribute>().Name}");
             }
             Console.WriteLine();
         }

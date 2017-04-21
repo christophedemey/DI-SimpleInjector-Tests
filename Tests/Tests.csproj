@@ -65,10 +65,6 @@
       <Project>{81ffd866-89ce-4fa8-9764-3d0d54d18005}</Project>
       <Name>BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ConsoleApp6\ConsoleApp6.csproj">
-      <Project>{8195B892-3AD0-433B-8942-3893EC08F64C}</Project>
-      <Name>ConsoleApp6</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{758BA8A3-CF40-4BD3-8067-00E2EDE8C2D1}</Project>
       <Name>Logger</Name>

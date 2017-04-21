@@ -1,13 +1,10 @@
 ﻿using Models.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Models.Attributes;
 
 namespace BLL.Tools
 {
-    [Name("Woooooop Tool")]
+    [ToolName("Woooooop Tool")]
     public class WoopTool : ITool
     {
         public string Name => this.GetType().Name;

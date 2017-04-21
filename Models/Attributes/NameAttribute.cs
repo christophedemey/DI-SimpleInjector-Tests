@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL
+namespace Models.Attributes
 {
-    public class NameAttribute : Attribute
+    public class ToolNameAttribute : Attribute
     {
         public readonly string Name;
-        public NameAttribute(string name) { Name = name; }
+        public ToolNameAttribute(string name) { Name = name; }
     }
 }

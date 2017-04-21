@@ -4,7 +4,6 @@ using BLL;
 using Models.Interfaces;
 using Moq;
 using Logger;
-using ConsoleApp6;
 
 namespace Tests
 {

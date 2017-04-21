@@ -2,6 +2,7 @@
 using BLL.Tools;
 using DAL;
 using Logger;
+using Models.Attributes;
 using Models.Interfaces;
 using SimpleInjector;
 using System;
@@ -51,7 +52,7 @@ namespace ConsoleApp6
             container.Register<IToolController, ToolController>(Lifestyle.Singleton);
 
             //Register tool factory.
-            container.RegisterSingleton<Func<string, ITool>>((toolType) => container.GetAllInstances<ITool>().Where(row => row.GetType().GetCustomAttribute<NameAttribute>().Name == toolType).FirstOrDefault());
+            container.RegisterSingleton<Func<string, ITool>>((toolType) => container.GetAllInstances<ITool>().Where(row => row.GetType().GetCustomAttribute<ToolNameAttribute>().Name == toolType).FirstOrDefault());
 
 
             //Data Access controllers.

@@ -9,16 +9,16 @@ namespace BLL.Tools
 {
     public class WoopTool : ITool
     {
-        public string Type => this.GetType().Name;
+        public string Name => this.GetType().Name;
 
         public void Disable()
         {
-            Console.WriteLine($"Disabled {Type.ToString()}");
+            Console.WriteLine($"Disabled {Name.ToString()}");
         }
 
         public void Enable()
         {
-            Console.WriteLine($"Enabled {Type.ToString()}");
+            Console.WriteLine($"Enabled {Name.ToString()}");
         }
     }
 }

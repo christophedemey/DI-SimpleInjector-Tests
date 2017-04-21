@@ -23,7 +23,7 @@ namespace BLL
             Console.WriteLine("Available tool types :");
             foreach (ITool tool in tools)
             {
-                Console.WriteLine($"- {tool.Type}");
+                Console.WriteLine($"- {tool.Name}");
             }
             Console.WriteLine();
         }

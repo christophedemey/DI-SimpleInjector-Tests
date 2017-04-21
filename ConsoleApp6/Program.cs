@@ -41,9 +41,7 @@ namespace ConsoleApp6
 
             //Register station controller.
             container.Register<IStationController, StationController>(Lifestyle.Transient);
-            //Register station controller factory (for creating more stations).
-            container.RegisterSingleton<Func<IStationController>>(() => container.GetInstance<IStationController>());
-
+            
             //Register all tools which reside in the same assembly as the concrete AmazingTool implementation.
             var toolAssembly = typeof(AmazingTool).Assembly;
             Assembly[] assemblies = new Assembly[] { toolAssembly };
@@ -53,7 +51,7 @@ namespace ConsoleApp6
             container.Register<IToolController, ToolController>(Lifestyle.Singleton);
 
             //Register tool factory.
-            container.RegisterSingleton<Func<string, ITool>>((toolType) => container.GetAllInstances<ITool>().Where(row => row.Type == toolType).FirstOrDefault());
+            container.RegisterSingleton<Func<string, ITool>>((toolType) => container.GetAllInstances<ITool>().Where(row => row.Name == toolType).FirstOrDefault());
 
 
             //Data Access controllers.

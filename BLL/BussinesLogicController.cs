@@ -1,10 +1,6 @@
 ﻿using Logger;
 using Models.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
@@ -33,11 +29,15 @@ namespace BLL
 
             ToolController.PrintToolTypes();
 
-            List<ITool> amazingTools = new List<ITool>();
-            for (int i = 0; i < 1000000; i++)
-            {
-                amazingTools.Add(ToolController.CreateToolOfType("Amazing Tool"));
-            }
+            //ITool toolTest = ToolController.CreateToolOfType("Amazing Tool");
+            //toolTest.Enable();
+            //toolTest.Disable();
+
+            //List<ITool> amazingTools = new List<ITool>();
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    amazingTools.Add(ToolController.CreateToolOfType("Amazing Tool"));
+            //}
         }
     }
 }

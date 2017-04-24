@@ -32,5 +32,15 @@ namespace BLL
         {
             return toolFactory.CreateInstance(toolType);
         }
+
+        public List<string> GetToolTypes()
+        {
+            List<string> toolTypes = new List<string>();
+            foreach (ITool tool in tools)
+            {
+                toolTypes.Add(tool.Name);
+            }
+            return toolTypes;
+        }
     }
 }

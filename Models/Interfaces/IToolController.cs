@@ -10,5 +10,6 @@ namespace Models.Interfaces
     {
         ITool CreateToolOfType(string toolType);
         void PrintToolTypes();
+        List<string> GetToolTypes();
     }
 }

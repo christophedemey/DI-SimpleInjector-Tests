@@ -45,7 +45,7 @@ namespace ConsoleApp6
             var toolAssembly = typeof(AmazingTool).Assembly;
             Assembly[] assemblies = new Assembly[] { toolAssembly };
             container.RegisterCollection(typeof(ITool), new List<Assembly> { toolAssembly });
-            
+
             //Register tool controller.
             container.Register<IToolController, ToolController>(Lifestyle.Singleton);
 

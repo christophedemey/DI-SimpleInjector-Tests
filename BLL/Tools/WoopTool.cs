@@ -1,21 +1,26 @@
 ﻿using Models.Interfaces;
 using System;
-using Models.Attributes;
 using System.Reflection;
 
 namespace BLL.Tools
 {
-    [ToolName("Woooooop Tool")]
     public class WoopTool : ITool
     {
+        public WoopTool()
+        {
+            Console.WriteLine($"{Name} tool created.");
+        }
+
+        public string Name => "Woop Tool";
+
         public void Disable()
         {
-            Console.WriteLine($"Disabled {GetType().GetCustomAttribute<ToolNameAttribute>().Name}");
+            Console.WriteLine($"Disabled {Name}");
         }
 
         public void Enable()
         {
-            Console.WriteLine($"Enabled {GetType().GetCustomAttribute<ToolNameAttribute>().Name}");
+            Console.WriteLine($"Enabled {Name}");
         }
     }
 }

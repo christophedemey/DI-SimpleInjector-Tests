@@ -1,25 +1,25 @@
-﻿using Models.Attributes;
-using Models.Interfaces;
+﻿using Models.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection;
 
 namespace BLL.Tools
 {
-    [ToolName("Amazing Tool")]
     public class AmazingTool : ITool
     {
+        public AmazingTool()
+        {
+            Console.WriteLine($"{Name} tool created.");
+        }
+
+        public string Name => "Amazing Tool";
+
         public void Disable()
         {
-            Console.WriteLine($"Disabled {GetType().GetCustomAttribute<ToolNameAttribute>().Name}");
+            Console.WriteLine($"Disabled {Name}");
         }
 
         public void Enable()
         {
-            Console.WriteLine($"Enabled {GetType().GetCustomAttribute<ToolNameAttribute>().Name}");
-         }
+            Console.WriteLine($"Enabled {Name}");
+        }
     }
 }

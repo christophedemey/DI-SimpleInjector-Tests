@@ -1,25 +1,26 @@
-﻿using Models.Attributes;
-using Models.Interfaces;
+﻿using Models.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Tools
 {
-    [ToolName("Shoot Yourself Tool")]
     public class ShootYourselfInTheFaceTool : ITool
     {
+        public ShootYourselfInTheFaceTool()
+        {
+            Console.WriteLine($"{Name} tool created.");
+        }
+
+        public string Name => "Shoot Yourself In The Face Tool";
+
         public void Disable()
         {
-            Console.WriteLine($"Disabled {GetType().GetCustomAttribute<ToolNameAttribute>().Name}");
+            Console.WriteLine($"Disabled {Name}");
         }
 
         public void Enable()
         {
-            Console.WriteLine($"Enabled {GetType().GetCustomAttribute<ToolNameAttribute>().Name}");
+            Console.WriteLine($"Enabled {Name}");
         }
     }
 }

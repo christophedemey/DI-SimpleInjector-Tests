@@ -8,6 +8,7 @@ namespace Models.Interfaces
 {
     public interface ITool
     {
+        string Name { get; }
         void Enable();
         void Disable();
     }

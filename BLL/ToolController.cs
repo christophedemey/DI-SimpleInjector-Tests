@@ -1,32 +1,33 @@
-﻿using BLL.Tools;
-using Models.Attributes;
-using Models.Interfaces;
+﻿using Models.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
     public class ToolController : IToolController
     {
-        private IEnumerable<ITool> tools = null;
+        private List<ITool> tools = null;
         private IToolFactory toolFactory = null;
 
         public ToolController(IEnumerable<ITool> tools, IToolFactory toolFactory)
         {
-            this.tools = tools;
+            Console.WriteLine("ToolController created - Gets injected IENumerable<ITool>.");
+
+            this.tools = new List<ITool>();            
             this.toolFactory = toolFactory;
+            foreach (ITool tool in tools)
+            {
+                this.tools.Add(tool);
+            }
         }
 
         public void PrintToolTypes()
         {
-            Console.WriteLine("Available tool types :");
+            Console.WriteLine("\r\nListing Available tool types :");
             foreach (ITool tool in tools)
             {
-                Console.WriteLine($"- {tool.GetType().GetCustomAttribute<ToolNameAttribute>().Name}");
+                Console.WriteLine($"- {tool.Name}");
             }
             Console.WriteLine();
         }

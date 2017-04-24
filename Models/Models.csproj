@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\NameAttribute.cs" />
     <Compile Include="Interfaces\IBussinesLogicController.cs" />
     <Compile Include="Interfaces\IDataAccessController.cs" />
     <Compile Include="Interfaces\IDirectoryStructureController.cs" />

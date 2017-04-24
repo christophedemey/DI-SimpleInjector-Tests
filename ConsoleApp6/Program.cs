@@ -2,15 +2,11 @@
 using BLL.Tools;
 using DAL;
 using Logger;
-using Models.Attributes;
 using Models.Interfaces;
 using SimpleInjector;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp6
 {
@@ -23,8 +19,8 @@ namespace ConsoleApp6
             IBussinesLogicController controller = container.GetInstance<IBussinesLogicController>();
             controller.Execute();
 
-            IGenericFactory<IStationController> stationControllerFactory= container.GetInstance<IGenericFactory<IStationController>>();
-            IStationController stationController = stationControllerFactory.CreateInstance();
+            Console.WriteLine("\r\nRequesting instance of ITool with name Amazing Tool");
+            ITool toolTest = controller.ToolController.CreateToolOfType("Amazing Tool");
 
             Console.WriteLine("Started");
             Console.ReadLine();
@@ -42,7 +38,7 @@ namespace ConsoleApp6
 
             //Register station controller.
             container.Register<IStationController, StationController>(Lifestyle.Transient);
-            
+
             //Register all tools which reside in the same assembly as the concrete AmazingTool implementation.
             var toolAssembly = typeof(AmazingTool).Assembly;
             Assembly[] assemblies = new Assembly[] { toolAssembly };
@@ -53,7 +49,7 @@ namespace ConsoleApp6
 
             //Register tool factory.
             container.RegisterSingleton<IToolFactory, ToolFactory>();
-            
+
             //Data Access controllers.
             container.Register<IDataAccessController, DataAccessController>(Lifestyle.Singleton);
             container.Register<IDirectoryStructureController, DirectoryStructureController>(Lifestyle.Singleton);
@@ -63,7 +59,7 @@ namespace ConsoleApp6
 
             //Generic factory.
             container.Register(typeof(IGenericFactory<>), typeof(GenericFactory<>), Lifestyle.Singleton);
-            
+
 
             container.Verify();
 

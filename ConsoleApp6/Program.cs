@@ -4,6 +4,7 @@ using DAL;
 using Logger;
 using Models.Interfaces;
 using SimpleInjector;
+using SimpleInjector.Lifestyles;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -21,15 +22,16 @@ namespace ConsoleApp6
 
             Console.WriteLine("\r\nRequesting instance of ITool with name Amazing Tool");
             ITool toolTest = controller.ToolController.CreateToolOfType("Amazing Tool");
+            Console.WriteLine($"Instance of {toolTest.Name} resolved.");
 
-            Console.WriteLine("Started");
+            Console.WriteLine("\r\nStarted");
             Console.ReadLine();
         }
 
         private static Container ComposeRoot()
         {
             var container = new Container();
-
+           
             //Bussines Logic controllers.
             container.Register<IBussinesLogicController, BussinesLogicController>(Lifestyle.Singleton);
 
@@ -43,7 +45,7 @@ namespace ConsoleApp6
             var toolAssembly = typeof(AmazingTool).Assembly;
             Assembly[] assemblies = new Assembly[] { toolAssembly };
             container.RegisterCollection(typeof(ITool), new List<Assembly> { toolAssembly });
-
+            
             //Register tool controller.
             container.Register<IToolController, ToolController>(Lifestyle.Singleton);
 

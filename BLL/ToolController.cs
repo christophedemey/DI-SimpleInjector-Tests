@@ -10,12 +10,10 @@ namespace BLL
         private IEnumerable<ITool> tools = null;
         private IToolFactory toolFactory = null;
 
-        public ToolController(IEnumerable<ITool> tools, IToolFactory toolFactory)
+        public ToolController(IToolFactory toolFactory)
         {
-            Console.WriteLine("ToolController created - Gets injected IENumerable<ITool>.");
-
-            this.tools = tools;
             this.toolFactory = toolFactory;
+            this.tools = toolFactory.CreateAllTools();
         }
 
         public void PrintToolTypes()

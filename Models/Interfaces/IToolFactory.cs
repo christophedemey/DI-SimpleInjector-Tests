@@ -8,6 +8,7 @@ namespace Models.Interfaces
 {
     public interface IToolFactory
     {
+        List<ITool> CreateAllTools();
         ITool CreateInstance(string name);
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Models.Interfaces;
 using SimpleInjector;
 using System.Linq;
+using System;
+using System.Collections.Generic;
 
 namespace ConsoleApp6
 {
@@ -12,7 +14,12 @@ namespace ConsoleApp6
         {
             this.container = container;
         }
-      
+
+        public List<ITool> CreateAllTools()
+        {
+            return container.GetAllInstances<ITool>().ToList();
+        }
+
         public ITool CreateInstance(string name)
         {
             return container.GetAllInstances<ITool>().

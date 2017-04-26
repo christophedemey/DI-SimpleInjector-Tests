@@ -7,6 +7,7 @@ using SimpleInjector;
 using SimpleInjector.Lifestyles;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace ConsoleApp6
@@ -31,7 +32,7 @@ namespace ConsoleApp6
         private static Container ComposeRoot()
         {
             var container = new Container();
-           
+
             //Bussines Logic controllers.
             container.Register<IBussinesLogicController, BussinesLogicController>(Lifestyle.Singleton);
 
@@ -49,8 +50,11 @@ namespace ConsoleApp6
             //Register tool controller.
             container.Register<IToolController, ToolController>(Lifestyle.Singleton);
 
-            //Register tool factory.
-            container.RegisterSingleton<IToolFactory, ToolFactory>();
+            //Register tool factories
+            container.RegisterSingleton<Func<List<ITool>>>(() => container.GetAllInstances<ITool>().ToList());
+            container.RegisterSingleton<Func<string, ITool>>((name) => container.GetAllInstances<ITool>().
+               Where(row => row.Name == name).
+               FirstOrDefault());
 
             //Data Access controllers.
             container.Register<IDataAccessController, DataAccessController>(Lifestyle.Singleton);
@@ -60,8 +64,7 @@ namespace ConsoleApp6
             container.Register<ILogger, LoggerController>(Lifestyle.Singleton);
 
             //Generic factory.
-            container.Register(typeof(IGenericFactory<>), typeof(GenericFactory<>), Lifestyle.Singleton);
-
+            container.RegisterSingleton<Func<Type, object>>((type) => container.GetInstance(type));
 
             container.Verify();
 

@@ -1,5 +1,6 @@
 ﻿using Logger;
 using Models.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace BLL
@@ -8,12 +9,12 @@ namespace BLL
     {
         private IDataAccessController dataAccess = null;
         private ILogger logger = null;
-        private IGenericFactory<IStationController> stationControllerFactory = null;
+        private Func<Type, object> stationControllerFactory = null;
         public IToolController ToolController { get; set; }
 
         public BussinesLogicController(IDataAccessController dataAccess,
           ILogger logger,
-          IGenericFactory<IStationController> stationControllerFactory)
+          Func<Type, object> stationControllerFactory)
         {
             this.dataAccess = dataAccess;
             this.logger = logger;
@@ -28,6 +29,8 @@ namespace BLL
             dataAccess.CreateDirectoryStructure();
 
             ToolController.PrintToolTypes();
+
+            var stationController = stationControllerFactory.Invoke(typeof(IStationController));
 
             //ITool toolTest = ToolController.CreateToolOfType("Amazing Tool");
             //toolTest.Enable();

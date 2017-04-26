@@ -31,7 +31,7 @@ namespace Tests
             Mock<IToolFactory> toolFactory = new Mock<IToolFactory>();
             toolFactory.Setup(row => row.CreateInstance(It.IsAny<string>())).Returns(new AmazingTool());
 
-            toolController = new ToolController(tools, toolFactory.Object);
+            toolController = new ToolController(toolFactory.Object);
         }
 
         [TestMethod]

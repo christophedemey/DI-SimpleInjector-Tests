@@ -9,12 +9,12 @@ namespace BLL
     {
         private IDataAccessController dataAccess = null;
         private ILogger logger = null;
-        private Func<Type, object> stationControllerFactory = null;
+        private IGenericFactory<IStationController> stationControllerFactory = null;
         public IToolController ToolController { get; set; }
 
         public BussinesLogicController(IDataAccessController dataAccess,
           ILogger logger,
-          Func<Type, object> stationControllerFactory)
+          IGenericFactory<IStationController> stationControllerFactory)
         {
             this.dataAccess = dataAccess;
             this.logger = logger;
@@ -30,7 +30,7 @@ namespace BLL
 
             ToolController.PrintToolTypes();
 
-            var stationController = stationControllerFactory.Invoke(typeof(IStationController));
+            var stationController = stationControllerFactory.CreateInstance();
 
             //ITool toolTest = ToolController.CreateToolOfType("Amazing Tool");
             //toolTest.Enable();

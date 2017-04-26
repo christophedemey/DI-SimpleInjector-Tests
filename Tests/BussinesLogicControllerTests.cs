@@ -13,7 +13,7 @@ namespace Tests
         private Mock<IDataAccessController> dataAccess = null;
         private Mock<ILogger> logger = null;
         private Mock<IToolController> tools = null;
-        //private Mock<IGenericFactory<IStationController>> stationFactory = null;
+        private Mock<IGenericFactory<IStationController>> stationFactory = null;
         private IBussinesLogicController bussinesLogic = null;
 
         [TestInitialize]

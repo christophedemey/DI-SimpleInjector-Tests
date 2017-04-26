@@ -50,11 +50,8 @@ namespace ConsoleApp6
             //Register tool controller.
             container.Register<IToolController, ToolController>(Lifestyle.Singleton);
 
-            //Register tool factories
-            container.RegisterSingleton<Func<List<ITool>>>(() => container.GetAllInstances<ITool>().ToList());
-            container.RegisterSingleton<Func<string, ITool>>((name) => container.GetAllInstances<ITool>().
-               Where(row => row.Name == name).
-               FirstOrDefault());
+            //Register tool factory.
+            container.RegisterSingleton<IToolFactory, ToolFactory>();
 
             //Data Access controllers.
             container.Register<IDataAccessController, DataAccessController>(Lifestyle.Singleton);
@@ -64,7 +61,8 @@ namespace ConsoleApp6
             container.Register<ILogger, LoggerController>(Lifestyle.Singleton);
 
             //Generic factory.
-            container.RegisterSingleton<Func<Type, object>>((type) => container.GetInstance(type));
+            container.Register(typeof(IGenericFactory<>), typeof(GenericFactory<>), Lifestyle.Singleton);
+
 
             container.Verify();
 

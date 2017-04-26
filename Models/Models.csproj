@@ -43,9 +43,11 @@
     <Compile Include="Interfaces\IBussinesLogicController.cs" />
     <Compile Include="Interfaces\IDataAccessController.cs" />
     <Compile Include="Interfaces\IDirectoryStructureController.cs" />
+    <Compile Include="Interfaces\IGenericFactory.cs" />
     <Compile Include="Interfaces\IStationController.cs" />
     <Compile Include="Interfaces\ITool.cs" />
     <Compile Include="Interfaces\IToolController.cs" />
+    <Compile Include="Interfaces\IToolFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

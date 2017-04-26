@@ -8,19 +8,17 @@ namespace BLL
     public class ToolController : IToolController
     {
         private IEnumerable<ITool> tools = null;
-        private Func<List<ITool>> toolFactory = null;
-        private Func<string, ITool> toolInstanceFactory = null;
-
-        public ToolController(Func<List<ITool>> toolFactory, Func<string, ITool> toolInstanceFactory)
+        private IToolFactory toolFactory = null;
+   
+        public ToolController(IToolFactory toolFactory)
         {
             this.toolFactory = toolFactory;
-            this.toolInstanceFactory = toolInstanceFactory;
         }
 
         public void PrintToolTypes()
         {
             Console.WriteLine("\r\nListing Available tool types :");
-            foreach (ITool tool in toolFactory.Invoke())
+            foreach (ITool tool in toolFactory.CreateAllTools())
             {
                 Console.WriteLine($"- {tool.Name}");
             }
@@ -29,7 +27,7 @@ namespace BLL
 
         public ITool CreateToolOfType(string toolType)
         {
-            return toolInstanceFactory.Invoke(toolType);
+            return toolFactory.CreateInstance(toolType);
         }
 
         public List<string> GetToolTypes()
